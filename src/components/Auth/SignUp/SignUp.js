@@ -1,12 +1,26 @@
 import { useState } from "react";
-import { Container, Logo, InputContainer } from "./StyledAuth";
-import { signInRequest } from "./serviceSignIn";
+import { Container, Logo, InputContainer } from "../StyledAuth";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function SignIn() {
+export default function SignUp() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const navigate = useNavigate();
+
+  function SignUpRequest(body) {
+    axios
+      .post("http://localhost:5000/signup", body)
+      .then((response) => {
+        navigate("/signin");
+      })
+      .catch((error) => {
+        const errorMessage = error.response.data.message;
+        alert(errorMessage);
+      });
+  }
 
   return (
     <Container>
@@ -40,11 +54,16 @@ export default function SignIn() {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
         <div
-          onClick={() =>
-            signInRequest({ name, email, password, passwordConfirmation })
-          }
+          onClick={() => {
+            SignUpRequest({
+              name,
+              email,
+              password,
+              passwordConfirmation,
+            });
+          }}
         >
-          Login
+          Sign Up
         </div>
       </InputContainer>
     </Container>
