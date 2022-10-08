@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { Container, Header, Logo, SearchBar } from "./StyledHomeScreen";
+import {
+  Container,
+  Header,
+  List,
+  Logo,
+  SearchBar,
+} from "./StyledHomeScreen";
+import TrendingsList from "./pages/Trendings";
+import App from "./pages/horizontalScroll/index";
 
 export default function HomeScreen() {
   const [search, setSearch] = useState();
+
   return (
     <Container>
       <Header>
@@ -11,10 +20,16 @@ export default function HomeScreen() {
           <h1>W.T.W.</h1>
         </Logo>
         <SearchBar
+          placeholder="  Search for Movies or TV Shows"
           value={search}
-          onKeyDown={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
+        <ion-icon name="person"></ion-icon>
       </Header>
+  
+      <List>
+        <TrendingsList />
+      </List>
     </Container>
   );
 }

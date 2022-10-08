@@ -26,7 +26,11 @@ export default function SignIn() {
         <ion-icon name="play"></ion-icon>
         <h1>W.T.W.</h1>
       </Logo>
-      <InputContainer>
+      <InputContainer
+        onKeyDown={(e) => {
+          if (e.key === "Enter") SignInRequest({ email, password });
+        }}
+      >
         <input
           placeholder="Email"
           type="email"
