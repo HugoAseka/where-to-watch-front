@@ -1,13 +1,8 @@
 import { useState } from "react";
-import {
-  Container,
-  Header,
-  List,
-  Logo,
-  SearchBar,
-} from "./StyledHomeScreen";
-import TrendingsList from "./pages/Trendings";
+import { Container, Header, List, Logo, SearchBar } from "./StyledHomeScreen";
+import TrendingShows from "./pages/TrendingShows";
 import App from "./pages/horizontalScroll/index";
+import TrendingMovies from "./pages/TrendingMovies";
 
 export default function HomeScreen() {
   const [search, setSearch] = useState();
@@ -26,9 +21,10 @@ export default function HomeScreen() {
         />
         <ion-icon name="person"></ion-icon>
       </Header>
-  
+
       <List>
-        <TrendingsList />
+        <TrendingShows />
+        <TrendingMovies />
       </List>
     </Container>
   );

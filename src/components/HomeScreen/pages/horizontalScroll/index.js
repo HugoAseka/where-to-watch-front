@@ -2,13 +2,14 @@ import Tag from "./Tag";
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function HorizontalList({ list }) {
   let scrl = useRef(null);
   const [scrollX, setscrollX] = useState(0);
   const [scrolEnd, setscrolEnd] = useState(false);
   const baseUrl = "https://image.tmdb.org/t/p/";
-  //Slide click
+  const navigate = useNavigate();
   const slide = (shift) => {
     scrl.current.scrollLeft += shift;
     setscrollX(scrollX + shift);
@@ -23,7 +24,6 @@ export default function HorizontalList({ list }) {
     }
   };
 
-  //Anim
   const anim = (e) => {
     gsap.from(e.target, { scale: 1 });
     gsap.to(e.target, { scale: 1.5 });
@@ -45,7 +45,6 @@ export default function HorizontalList({ list }) {
     }
   };
 
-
   return (
     <Container>
       {scrollX !== 0 && (
@@ -62,7 +61,11 @@ export default function HorizontalList({ list }) {
       )}
       <Unlisted ref={scrl} onScroll={scrollCheck}>
         {list.map((d, i) => (
-          <Tag data={<img src={baseUrl+"w200"+d.poster_path} />} key={i} />
+          <Tag
+            el={d}
+            data={<img src={baseUrl + "w200" + d.poster_path} />}
+            key={i}
+          />
         ))}
       </Unlisted>
       {!scrolEnd && (
