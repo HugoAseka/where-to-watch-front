@@ -4,8 +4,6 @@ import { Container } from "./ColumnStyle";
 import HorizontalList from "./horizontalScroll";
 
 export default function TrendingShows() {
-
-  
   const [list, setList] = useState([]);
   // const baseUrl = "https://image.tmdb.org/t/p/";
   useEffect(() => {
