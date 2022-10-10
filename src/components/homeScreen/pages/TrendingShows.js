@@ -5,7 +5,6 @@ import HorizontalList from "./horizontalScroll";
 
 export default function TrendingShows() {
   const [list, setList] = useState([]);
-  // const baseUrl = "https://image.tmdb.org/t/p/";
   useEffect(() => {
     axios
       .get("http://localhost:5000/trendingShows")

@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const List = styled.div`
   width: 100vw;
   min-height: 100vh;
-  background-color: red;
+  background-color: #fafafafa;
   display: flex;
   flex-direction: column;
   align-items: center;

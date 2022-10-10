@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomeScreen from "./HomeScreen/HomeScreen";
-import SignIn from "./Auth/SignIn/SignIn";
-import SignUp from "./Auth/SignUp/SignUp";
-import MoviePage from "./Movie/Movie";
-import TvPage from "./TV/TV";
+import HomeScreen from "./homeScreen/HomeScreen";
+import SignIn from "./auth/SignIn/SignIn";
+import SignUp from "./auth/SignUp/SignUp";
+import MoviePage from "./movie/Movie";
+import TvPage from "./tv/TV";
+import SearchPage from "./searchList/SearchList";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/movie/:id" element={<MoviePage />} />
         <Route path="/tv/:id" element={<TvPage />} />
+        <Route path="/search/:query" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   );

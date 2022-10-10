@@ -1,23 +1,25 @@
 import Top from "../Header";
-import { Container } from "../HomeScreen/StyledHomeScreen";
+import { Container } from "../homeScreen/StyledHomeScreen";
 import styled from "styled-components";
 import { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function TvPage() {
+export default function MoviePage() {
   const { id } = useParams();
   const baseUrl = "https://image.tmdb.org/t/p/";
-  const [show, setShow] = useState([]);
+  const [movie, setMovie] = useState([]);
   const [providers, setProviders] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/tv/" + id)
+      .get("http://localhost:5000/movie/" + id)
       .then((response) => {
         console.log(response.data);
-        setShow(response.data.show);
-        setProviders(response.data.providers.flatrate);
+        setMovie(response.data.movie);
+        if (response.data.providers.flatrate) {
+          setProviders(response.data.providers.flatrate);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -28,17 +30,17 @@ export default function TvPage() {
     <Container>
       <Top />
 
-      {show.length !== 0 ? (
+      {movie.length !== 0 ? (
         <MovieBox>
-          <img src={baseUrl + "w400" + show.poster_path} alt="poster" />
+          <img src={baseUrl + "w400" + movie.poster_path} alt="poster" />
 
           <Details>
-            <h2>{show.title}</h2>
-            <span>{show.tagline}</span>
-            <p>{show.overview}</p>
-            <div>{Math.round(show.vote_average * 10)}%</div>
+            <h2>{movie.title}</h2>
+            <span>{movie.tagline}</span>
+            <p>{movie.overview}</p>
+            <div>Rating: {Math.round(movie.vote_average * 10)}%</div>
             Streaming on:
-            {providers.lengh !== 0 ? (
+            {providers.length !== 0 ? (
               <Providers>
                 {providers.map((p) => (
                   <img src={baseUrl + "w92" + p.logo_path} />
@@ -62,6 +64,7 @@ const MovieBox = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  gap: 10px;
   img {
     height: 60vh;
     width: auto;
@@ -79,6 +82,7 @@ const Details = styled.div`
   color: #fafafa;
   width: 66vw;
   padding: 0 20px;
+  gap: 10px;
   box-sizing: border-box;
   @media (max-width: 612px) {
     padding: 0;
