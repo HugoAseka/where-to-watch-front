@@ -9,14 +9,14 @@ import { useState } from "react";
 export default function TvPage() {
   const { id } = useParams();
   const baseUrl = "https://image.tmdb.org/t/p/";
-  const [movie, setMovie] = useState([]);
+  const [show, setShow] = useState([]);
   const [providers, setProviders] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:5000/tv/" + id)
       .then((response) => {
         console.log(response.data);
-        setMovie(response.data.movie);
+        setShow(response.data.show);
         setProviders(response.data.providers.flatrate);
       })
       .catch((error) => {
@@ -28,15 +28,15 @@ export default function TvPage() {
     <Container>
       <Top />
 
-      {movie.length !== 0 ? (
+      {show.length !== 0 ? (
         <MovieBox>
-          <img src={baseUrl + "w400" + movie.poster_path} alt="poster" />
+          <img src={baseUrl + "w400" + show.poster_path} alt="poster" />
 
           <Details>
-            <h2>{movie.title}</h2>
-            <span>{movie.tagline}</span>
-            <p>{movie.overview}</p>
-            <div>{Math.round(movie.vote_average * 10)}%</div>
+            <h2>{show.title}</h2>
+            <span>{show.tagline}</span>
+            <p>{show.overview}</p>
+            <div>{Math.round(show.vote_average * 10)}%</div>
             Streaming on:
             {providers.lengh !== 0 ? (
               <Providers>
