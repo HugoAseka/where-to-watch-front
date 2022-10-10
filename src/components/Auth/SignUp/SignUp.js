@@ -28,7 +28,12 @@ export default function SignUp() {
         <ion-icon name="play"></ion-icon>
         <h1>W.T.W.</h1>
       </Logo>
-      <InputContainer>
+      <InputContainer
+        onKeyDown={(e) => {
+          if (e.key === "Enter")
+            SignUpRequest({ name, email, password, passwordConfirmation });
+        }}
+      >
         <input
           placeholder="Name"
           type="text"
