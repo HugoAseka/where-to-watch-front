@@ -1,31 +1,17 @@
-import { useState } from "react";
-import { Container, Header, List, Logo, SearchBar } from "./StyledHomeScreen";
+import { Container, List } from "./StyledHomeScreen";
 import TrendingShows from "./pages/TrendingShows";
 import TrendingMovies from "./pages/TrendingMovies";
-import InTheaters from "./pages/InTheaters"
+import InTheaters from "./pages/InTheaters";
+import Top from "../Header";
 
 export default function HomeScreen() {
-  const [search, setSearch] = useState();
-
   return (
     <Container>
-      <Header>
-        <Logo>
-          <ion-icon name="play"></ion-icon>
-          <h1>W.T.W.</h1>
-        </Logo>
-        <SearchBar
-          placeholder="  Search for Movies or TV Shows"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <ion-icon name="person"></ion-icon>
-      </Header>
-
+      <Top />
       <List>
+        <InTheaters />
         <TrendingShows />
         <TrendingMovies />
-        <InTheaters />
       </List>
     </Container>
   );

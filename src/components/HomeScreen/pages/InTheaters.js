@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { Container } from "./ColumnStyle";
 import HorizontalList from "./horizontalScroll";
 
-
-
 export default function InTheaters() {
   const [list, setList] = useState([]);
   useEffect(() => {

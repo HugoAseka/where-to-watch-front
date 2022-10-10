@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { Container } from "./ColumnStyle";
 import HorizontalList from "./horizontalScroll";
 
-
-
 export default function TrendingMovies() {
   const [list, setList] = useState([]);
   useEffect(() => {
