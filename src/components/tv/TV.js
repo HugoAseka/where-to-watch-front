@@ -13,7 +13,7 @@ export default function TvPage() {
   const [providers, setProviders] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/tv/" + id)
+      .get("https://where-to-watch-back.herokuapp.com/tv/" + id)
       .then((response) => {
         console.log(response.data);
         setShow(response.data.show);

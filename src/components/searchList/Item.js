@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Item({ el }) {
-  console.log(el);
   const imageUrl = "https://image.tmdb.org/t/p/w154" + el.poster_path;
   const navigate = useNavigate();
   function goTo() {
@@ -21,7 +20,7 @@ export default function Item({ el }) {
 
 const Container = styled.div`
   width: 80vw;
-  height: 200px;
+  min-height: 200px;
   display: flex;
   background-color: black;
   border-radius: 10px;
@@ -30,6 +29,10 @@ const Container = styled.div`
   img {
     width: 154px;
     height: auto;
+  }
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 

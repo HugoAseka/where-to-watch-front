@@ -10,11 +10,9 @@ export default function SearchPage() {
   const { query } = useParams();
   const [list, setList] = useState([]);
   useEffect(() => {
-    console.log(query);
     axios
-      .get("http://localhost:5000/search?query=" + query)
+      .get("https://where-to-watch-back.herokuapp.com/search?query=" + query)
       .then((response) => {
-        console.log(response.data.results);
         if (response.data.results) {
           setList([...response.data.results]);
         }
@@ -39,7 +37,7 @@ const SearchList = styled.div`
   width: 100vw;
   min-height: 100vh;
 
-  background-color:#fafafafa;
+  background-color: #fafafafa;
   display: flex;
   flex-direction: column;
   align-items: center;

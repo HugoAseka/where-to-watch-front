@@ -12,7 +12,7 @@ export default function SignUp() {
 
   function SignUpRequest(body) {
     axios
-      .post("http://localhost:5000/signup", body)
+      .post("https://where-to-watch-back.herokuapp.com/signup", body)
       .then((response) => {
         navigate("/signin");
       })

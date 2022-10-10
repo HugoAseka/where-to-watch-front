@@ -7,7 +7,7 @@ export default function TrendingShows() {
   const [list, setList] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/trendingShows")
+      .get("https://where-to-watch-back.herokuapp.com/trendingShows")
       .then((response) => {
         setList(response.data.results);
       })

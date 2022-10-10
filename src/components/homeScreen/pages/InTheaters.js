@@ -7,7 +7,7 @@ export default function InTheaters() {
   const [list, setList] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/theaters")
+      .get("https://where-to-watch-back.herokuapp.com/theaters")
       .then((response) => {
         setList(response.data.results);
       })

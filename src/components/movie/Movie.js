@@ -13,7 +13,7 @@ export default function MoviePage() {
   const [providers, setProviders] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/movie/" + id)
+      .get("https://where-to-watch-back.herokuapp.com/movie/" + id)
       .then((response) => {
         console.log(response.data);
         setMovie(response.data.movie);
