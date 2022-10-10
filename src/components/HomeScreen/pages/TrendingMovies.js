@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { Container } from "./ColumnStyle";
 import HorizontalList from "./horizontalScroll";
 
+
+
 export default function TrendingMovies() {
   const [list, setList] = useState([]);
-  const baseUrl = "https://image.tmdb.org/t/p/";
   useEffect(() => {
     axios
       .get("http://localhost:5000/trendingMovies")

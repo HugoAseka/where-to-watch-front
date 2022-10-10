@@ -2,14 +2,12 @@ import Tag from "./Tag";
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
 export default function HorizontalList({ list }) {
   let scrl = useRef(null);
   const [scrollX, setscrollX] = useState(0);
   const [scrolEnd, setscrolEnd] = useState(false);
   const baseUrl = "https://image.tmdb.org/t/p/";
-  const navigate = useNavigate();
   const slide = (shift) => {
     scrl.current.scrollLeft += shift;
     setscrollX(scrollX + shift);
@@ -50,7 +48,7 @@ export default function HorizontalList({ list }) {
       {scrollX !== 0 && (
         <Button
           className="prev"
-          onClick={() => slide(-50)}
+          onClick={() => slide(-300)}
           onMouseEnter={(e) => anim(e)}
           onMouseLeave={(e) => anim2(e)}
         >
@@ -71,7 +69,7 @@ export default function HorizontalList({ list }) {
       {!scrolEnd && (
         <Button
           className="next"
-          onClick={() => slide(+50)}
+          onClick={() => slide(+300)}
           onMouseEnter={(e) => anim(e)}
           onMouseLeave={(e) => anim2(e)}
         >

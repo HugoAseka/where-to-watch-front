@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import { Container } from "./ColumnStyle";
 import HorizontalList from "./horizontalScroll";
 
-export default function TrendingShows() {
 
-  
+
+export default function InTheaters() {
   const [list, setList] = useState([]);
-  // const baseUrl = "https://image.tmdb.org/t/p/";
   useEffect(() => {
     axios
-      .get("http://localhost:5000/trendingShows")
+      .get("http://localhost:5000/theaters")
       .then((response) => {
         setList(response.data.results);
       })
@@ -19,7 +18,7 @@ export default function TrendingShows() {
 
   return (
     <Container>
-      <p>Trending TV Shows</p>
+      <p>In Theaters</p>
       <HorizontalList list={list} />
     </Container>
   );

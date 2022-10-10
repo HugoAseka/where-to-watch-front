@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Container, Header, List, Logo, SearchBar } from "./StyledHomeScreen";
 import TrendingShows from "./pages/TrendingShows";
-import App from "./pages/horizontalScroll/index";
 import TrendingMovies from "./pages/TrendingMovies";
+import InTheaters from "./pages/InTheaters"
 
 export default function HomeScreen() {
   const [search, setSearch] = useState();
@@ -25,6 +25,7 @@ export default function HomeScreen() {
       <List>
         <TrendingShows />
         <TrendingMovies />
+        <InTheaters />
       </List>
     </Container>
   );
